@@ -1,7 +1,7 @@
 <?php
-namespace Karlomikus\Theme;
+namespace Lukeed\Theme;
 
-use Karlomikus\Theme\Contracts\ThemeInfoInterface;
+use Lukeed\Theme\Contracts\ThemeInfoInterface;
 
 class ThemeInfo implements ThemeInfoInterface
 {

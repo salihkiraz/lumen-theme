@@ -9,7 +9,7 @@ class ThemeTest extends TestCase
     {
         parent::setUp();
 
-        $theme = new Karlomikus\Theme\Theme($this->app);
+        $theme = new Lukeed\Theme\Theme($this->app);
         $theme->setDefaultThemePath(__DIR__ . '/stubs');
 
         $this->theme = $theme;
@@ -30,7 +30,7 @@ class ThemeTest extends TestCase
 
     public function testSetTheme()
     {
-        $this->setExpectedException('Karlomikus\Theme\Exceptions\ThemeNotFoundException');
+        $this->setExpectedException('Lukeed\Theme\Exceptions\ThemeNotFoundException');
         $this->theme->set('throw-exception');
     }
 

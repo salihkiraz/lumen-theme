@@ -1,5 +1,5 @@
 <?php
-namespace Karlomikus\Theme\Exceptions;
+namespace Lukeed\Theme\Exceptions;
 
 class ThemeNotFoundException extends \Exception
 {

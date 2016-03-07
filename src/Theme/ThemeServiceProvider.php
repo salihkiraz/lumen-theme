@@ -1,11 +1,11 @@
 <?php
-namespace Karlomikus\Theme;
+namespace Lukeed\Theme;
 
 use Illuminate\Support\ServiceProvider;
-use Karlomikus\Theme\Commands\ThemeListCommand;
-use Karlomikus\Theme\Commands\ThemeMakeCommand;
-use Karlomikus\Theme\Contracts\ThemeInterface;
-use Karlomikus\Theme\Theme;
+use Lukeed\Theme\Commands\ThemeListCommand;
+use Lukeed\Theme\Commands\ThemeMakeCommand;
+use Lukeed\Theme\Contracts\ThemeInterface;
+use Lukeed\Theme\Theme;
 
 class ThemeServiceProvider extends ServiceProvider
 {

@@ -1,5 +1,5 @@
 <?php
-namespace Karlomikus\Theme\Contracts;
+namespace Lukeed\Theme\Contracts;
 
 interface ThemeInfoInterface
 {

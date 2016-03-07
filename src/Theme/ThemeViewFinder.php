@@ -1,12 +1,12 @@
 <?php
-namespace Karlomikus\Theme;
+namespace Lukeed\Theme;
 
 use Illuminate\View\FileViewFinder;
 
 /**
  * Theme view finder
  *
- * @package Karlomikus\Theme
+ * @package Lukeed\Theme
  */
 class ThemeViewFinder extends FileViewFinder
 {

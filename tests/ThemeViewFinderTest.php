@@ -1,6 +1,7 @@
 <?php
 
-class ThemeViewFinderTest extends TestCase {
+class ThemeViewFinderTest extends TestCase
+{
 
     public function tearDown()
     {
@@ -29,7 +30,7 @@ class ThemeViewFinderTest extends TestCase {
     private function getFinder()
     {
         $files = Mockery::mock('Illuminate\Filesystem\Filesystem');
-        $finder  = new Karlomikus\Theme\ThemeViewFinder($files, ['test/path']);
+        $finder = new Lukeed\Theme\ThemeViewFinder($files, ['test/path']);
 
         return $finder;
     }

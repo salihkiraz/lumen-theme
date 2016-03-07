@@ -5,7 +5,7 @@ class ThemeInfoTest extends TestCase
 
     public function testGetters()
     {
-        $themeInfo = new Karlomikus\Theme\ThemeInfo();
+        $themeInfo = new Lukeed\Theme\ThemeInfo();
         $themeInfo->setName('test-theme');
         $themeInfo->setVersion('1.0');
         $themeInfo->setDirectory('test');

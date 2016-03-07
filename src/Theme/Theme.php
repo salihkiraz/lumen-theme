@@ -1,17 +1,17 @@
 <?php
-namespace Karlomikus\Theme;
+namespace Lukeed\Theme;
 
-use Karlomikus\Theme\Exceptions\ThemeNotFoundException;
+use Lukeed\Theme\Exceptions\ThemeNotFoundException;
 use Illuminate\Contracts\Container\Container;
-use Karlomikus\Theme\Exceptions\ThemeInfoAttributeException;
-use Karlomikus\Theme\Contracts\ThemeInterface;
+use Lukeed\Theme\Exceptions\ThemeInfoAttributeException;
+use Lukeed\Theme\Contracts\ThemeInterface;
 
 /**
  * Theme
  *
  * @author Karlo Mikuš
  * @version 1.0.2
- * @package Karlomikus\Theme
+ * @package Lukeed\Theme
  */
 class Theme implements ThemeInterface
 {

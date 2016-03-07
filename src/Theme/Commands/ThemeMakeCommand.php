@@ -1,8 +1,8 @@
 <?php
-namespace Karlomikus\Theme\Commands;
+namespace Lukeed\Theme\Commands;
 
 use Illuminate\Console\Command;
-use Karlomikus\Theme\Theme;
+use Lukeed\Theme\Theme;
 use Illuminate\Filesystem\Filesystem as File;
 
 class ThemeMakeCommand extends COmmand

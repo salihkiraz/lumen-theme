@@ -1,5 +1,5 @@
 <?php
-namespace Karlomikus\Theme\Facade;
+namespace Lukeed\Theme\Facade;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -12,6 +12,6 @@ class Theme extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'Karlomikus\Theme\Contracts\ThemeInterface';
+        return 'Lukeed\Theme\Contracts\ThemeInterface';
     }
 }
