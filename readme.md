@@ -1,10 +1,12 @@
-# Laravel Theme
+# Lumen Theme
 
-[![Build Status](https://travis-ci.org/karlomikus/theme.svg?branch=master)](https://travis-ci.org/karlomikus/theme)
-[![Latest Stable Version](https://poser.pugx.org/karlomikus/theme/v/stable)](https://packagist.org/packages/karlomikus/theme)
-[![License](https://poser.pugx.org/karlomikus/theme/license)](https://packagist.org/packages/karlomikus/theme)
+[![Build Status](https://travis-ci.org/lukeed/theme.svg?branch=master)](https://travis-ci.org/lukeed/theme)
+[![Latest Stable Version](https://poser.pugx.org/lukeed/theme/v/stable)](https://packagist.org/packages/lukeed/theme)
+[![License](https://poser.pugx.org/lukeed/theme/license)](https://packagist.org/packages/lukeed/theme)
 
-Add theming support to your Laravel 5.* projects.
+Add theming support to your Lumen 5.* projects.
+
+For Laravel support, go to [Laravel Theme](https://github.com/karlomikus/theme).
 
 ### Features
 
@@ -17,67 +19,102 @@ Add theming support to your Laravel 5.* projects.
 
 Require it via terminal like so:
 ``` bash
-$ composer require karlomikus/theme
+$ composer require lukeed/lumen-theme
 ```
 
 Or add the package to your composer file:
 
 ``` json
-"karlomikus/theme": "1.*"
+"lukeed/lumen-theme": "1.*"
 ```
 
-Next add new service provider and facade to your `config/app.php` file:
+Add a new service provider and optional facade to your `bootstrap/app.php` file:
 
-``` php
+```php
 // Service provider
-Karlomikus\Theme\ThemeServiceProvider::class
+$app->register(Lukeed\Theme\ThemeServiceProvider::class);
+
 // Facade
-'Theme' => Karlomikus\Theme\Facade\Theme::class
+class_alias(Lukeed\Theme\Facade\Theme::class, 'Theme');
 ```
 
-Next you need to publish the config file:
+## Configuration
 
-``` bash
-$ php artisan vendor:publish
+#### theme.path
+
+> Type: string
+
+> Default: `public/themes`
+
+The path to the `themes` directory, where all themes should live.
+
+To change this value, you may either create a custom `config/theme.php` file and load it inside `bootstrap/app.php` or you may set the value directly via the `config()` helper anywhere inside your application.
+
+```php
+// bootstrap/app.php
+config(['theme.path' => realpath(base_path('public/custom/path/themes'))]);
 ```
 
-This will create a theme.php file in your config directory in which you can define your default path to themes directory.
+OR
 
-## Theme setup
+```php
+// config/theme.php
+return [
+    'path' => realpath(base_path('public/custom/path/themes'))])
+];
 
-Create new folder in your themes directory (default: public/themes) and add views folder (which will hold all your custom views)
-and theme.json file (contains information about a theme).
+// bootstrap/app.php
+$app->configure('theme');
+```
 
-``` json
+## Creating a Theme
+
+Every theme directory **must** contain a `views` folder and a `theme.json` file, which contains descriptive information about the theme.
+
+```json
 {
     "name": "Theme name",
-    "author": "Karlo Mikuš",
+    "author": "Author Name",
     "description": "Default theme description",
     "version": "1.0",
-    "namespace": "theme-folder",
+    "directory": "theme-folder",
     "parent": null
 }
 ```
 
-This are all available attributes, but the required ones only include: `name`, `author` and `namespace`.
-Value of `namespace` must be the name of the theme's folder.
+The `name`, `author` and `directory` fields are **required**.
 
-If you want your theme to depend on other theme views, just include a parent theme namespace in `parent` attribute.
+The `directory` value must match the name of the theme directory; eg: `public/themes/theme-folder`.
+
+If your theme is meant to extend or inherit another theme's views, include the `directory` name "parent theme" as the `parent` value; eg: `parent-folder`.
+
+## View Hierarchy
+
+Given the example:
+```php
+view('home');
+```
+
+The currently active theme will be scanned for a `home.blade.php`. 
+
+If there is a `parent` attached to the theme, its directory will be scanned next.
+
+Lastly, Lumen's `view.paths` config value will searched. By default, this is `resources/views`.
 
 ## Usage
 
-The library will firstly check all available valid themes in theme directory.
+The `theme.path` directory will be scanned for all available themes. 
 
-You can then set a theme by it's namespace:
+**If only one theme is found, it will automatically be selected as the active theme.** To manually select a different theme, you may use the `set` method which accepts a `directory` value.
 
-``` php
-Theme::set('theme-namespace');
+```php
+Theme::set('theme-folder');
 ```
 
 Then you call views like you usually do in laravel:
 
 ``` php
-view('home');
+view('home', []);
 ```
 
 This will firstly check if there is a home.blade.php in current theme directory.
@@ -86,7 +123,7 @@ If none is found then it checks parent theme, and finally falls back to default 
 You can also inject theme instance using ThemeInterface.
 
 ``` php
-use Karlomikus\Theme\Contracts\ThemeInterface;
+use lukeed\Theme\Contracts\ThemeInterface;
 
 private $theme;
 
@@ -95,10 +132,6 @@ public function __construct(ThemeInterface $theme)
     $this->theme = $theme
 }
 ```
-
-### Theme path
-
-You can set default path to themes folder in config/theme.php file. Please note that currently themes folder must be somewhere inside public folder.
 
 ## Available methods
 
