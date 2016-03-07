@@ -52,7 +52,7 @@ class Theme implements ThemeInterface
         // Config view finder
         $paths = $app['config']['view.paths'];
         $this->view = $app->make('view');
-        $this->view->setFinder(new ThemeViewFinder($app['files'], $paths));
+        $this->view->setFinder(new ThemeViewFinder($app['files'], (array) $paths));
 
         // Scan themes
         $this->scanThemes();
