@@ -11,7 +11,7 @@ use Lukeed\Theme\Contracts\ThemeInterface;
  *
  * @author Karlo Mikuš
  * @author Luke Edwards
- * @version 1.0.2
+ * @version 1.0.3
  * @package Lukeed\Theme
  */
 class Theme implements ThemeInterface
