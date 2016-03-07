@@ -11,12 +11,7 @@ class ThemeServiceProvider extends ServiceProvider
 {
     public function register()
     {
-        require __DIR__ . '/helpers.php';
-
-        $this->publishes([
-            __DIR__ . '/config/theme.php' => config_path('theme.php'),
-        ]);
-
+        require_once __DIR__ . '/helpers.php';
         $this->registerCore();
     }
 
