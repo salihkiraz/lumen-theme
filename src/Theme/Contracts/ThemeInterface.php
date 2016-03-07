@@ -6,7 +6,7 @@ interface ThemeInterface
     /**
      * Set current active theme
      *
-     * @param string $theme Theme namespace
+     * @param string $theme Theme directory
      * @throws ThemeNotFoundException
      */
     public function set($theme);
@@ -21,7 +21,7 @@ interface ThemeInterface
     /**
      * Returns theme information.
      *
-     * @param string Theme namespace
+     * @param string Theme directory
      * @return null|ThemeInfo
      */
     public function get($theme = null);

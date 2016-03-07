@@ -35,14 +35,14 @@ class ThemeListCommand extends Command
     public function handle()
     {
         $themes = $this->laravel['theme']->all();
-        $headers = ['Name', 'Author', 'Namespace'];
+        $headers = ['Name', 'Author', 'Directory'];
 
         $output = [];
         foreach ($themes as $theme) {
             $output[] = [
-                'Name'      => $theme->getName(),
-                'Author'    => $theme->getAuthor(),
-                'Namespace' => $theme->getNamespace()
+                'Name' => $theme->getName(),
+                'Author' => $theme->getAuthor(),
+                'Directory' => $theme->getDirectory(),
             ];
         }
 

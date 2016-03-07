@@ -12,8 +12,8 @@ interface ThemeInfoInterface
     public function getAuthor();
     public function setAuthor($author);
 
-    public function getNamespace();
-    public function setNamespace($namespace);
+    public function getDirectory();
+    public function setDirectory($directory);
 
     public function getVersion();
     public function setVersion($version = null);

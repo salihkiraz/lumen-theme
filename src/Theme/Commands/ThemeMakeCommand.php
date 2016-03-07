@@ -12,7 +12,7 @@ class ThemeMakeCommand extends COmmand
      *
      * @var string
      */
-    protected $signature = 'theme:make {namespace}';
+    protected $signature = 'theme:make {directory}';
 
     /**
      * The console command description.
@@ -29,11 +29,11 @@ class ThemeMakeCommand extends COmmand
     protected $theme;
 
     /**
-     * Theme namespace
+     * Theme directory
      *
      * @var string
      */
-    private $themeNamespace;
+    private $themeDir;
 
     /**
      * Execute the console command.
@@ -42,10 +42,10 @@ class ThemeMakeCommand extends COmmand
      */
     public function handle()
     {
-        $themeNamespace = $this->argument('namespace');
-        $themeNamespace = strtolower($themeNamespace);
+        $themeDir = $this->argument('directory');
+        $themeDir = strtolower($themeDir);
 
-        $this->themeNamespace = $themeNamespace;
+        $this->themeDir = $themeDir;
 
         $name = $this->ask('Template name');
         $author = $this->ask('Template author');
@@ -60,7 +60,7 @@ class ThemeMakeCommand extends COmmand
     {
         $file = new File;
         $location = config('theme.path');
-        $path = $location . DIRECTORY_SEPARATOR . $this->themeNamespace;
+        $path = $location . DIRECTORY_SEPARATOR . $this->themeDir;
 
         if (!$file->isDirectory($path)) {
             $file->makeDirectory($path);
@@ -74,13 +74,13 @@ class ThemeMakeCommand extends COmmand
     {
         $file = new File;
         $location = config('theme.path');
-        $path = $location . DIRECTORY_SEPARATOR . $this->themeNamespace . '/theme.json';
+        $path = $location . DIRECTORY_SEPARATOR . $this->themeDir . '/theme.json';
 
         if (!$file->exists($path)) {
             $stub = file_get_contents(__DIR__ . '/stubs/theme.stub');
             $stub = str_replace('$NAME$', $name, $stub);
             $stub = str_replace('$AUTHOR$', $author, $stub);
-            $stub = str_replace('$NAMESPACE$', $this->themeNamespace, $stub);
+            $stub = str_replace('$DIRECTORY$', $this->themeDir, $stub);
 
             $file->put($path, $stub);
         } else {

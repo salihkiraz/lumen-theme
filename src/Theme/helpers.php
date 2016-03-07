@@ -10,7 +10,7 @@ if (!function_exists('theme_url')) {
      */
     function theme_url($path, $secure = null)
     {
-        $currentTheme = app('Karlomikus\Theme\Contracts\ThemeInterface')->get()->getNamespace();
+        $currentTheme = app('Karlomikus\Theme\Contracts\ThemeInterface')->get()->getDirectory();
 
         return app('url')->asset('themes' . DIRECTORY_SEPARATOR . $currentTheme . DIRECTORY_SEPARATOR . $path, $secure);
     }

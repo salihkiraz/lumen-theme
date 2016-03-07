@@ -9,7 +9,7 @@ use Karlomikus\Theme\Contracts\ThemeInterface;
 /**
  * Theme
  *
- * @author Karlo Mikuš
+ * @author Karlo MikuÅ¡
  * @version 1.0.2
  * @package Karlomikus\Theme
  */
@@ -61,7 +61,7 @@ class Theme implements ThemeInterface
     /**
      * Set current active theme
      *
-     * @param string $theme Theme namespace
+     * @param string $theme Theme directory
      * @throws ThemeNotFoundException
      */
     public function set($theme)
@@ -94,7 +94,7 @@ class Theme implements ThemeInterface
     /**
      * Returns theme information.
      *
-     * @param string Theme namespace
+     * @param string Theme directory
      * @return null|ThemeInfo
      */
     public function get($theme = null)
@@ -148,7 +148,7 @@ class Theme implements ThemeInterface
             return;
         }
 
-        $th = $this->findThemeByNamespace($theme);
+        $th = $this->findThemeByDirectory($theme);
 
         if (isset($th)) {
             $viewFinder = $this->view->getFinder();
@@ -165,13 +165,13 @@ class Theme implements ThemeInterface
     /**
      * Find a theme from all scanned themes
      *
-     * @param string $namespace
+     * @param string $directory
      * @return null|ThemeInfo
      */
-    private function findThemeByNamespace($namespace)
+    private function findThemeByDirectory($directory)
     {
-        if (isset($this->themes[$namespace])) {
-            return $this->themes[$namespace];
+        if (isset($this->themes[$directory])) {
+            return $this->themes[$directory];
         }
 
         return null;
@@ -194,7 +194,7 @@ class Theme implements ThemeInterface
                 $contents = file_get_contents($json);
                 if (!$contents === false) {
                     $th = $this->parseThemeInfo(json_decode($contents, true));
-                    $themes[$th->getNamespace()] = $th;
+                    $themes[$th->getDirectory()] = $th;
                 }
             }
         }
@@ -205,14 +205,14 @@ class Theme implements ThemeInterface
     /**
      * Find theme views path
      *
-     * @param $namespace
+     * @param $directory
      * @return string
      */
-    private function findPath($namespace)
+    private function findPath($directory)
     {
         $path = [];
         $path[] = $this->basePath;
-        $path[] = $namespace;
+        $path[] = $directory;
         $path[] = 'views';
 
         return implode(DIRECTORY_SEPARATOR, $path);
@@ -229,7 +229,7 @@ class Theme implements ThemeInterface
     {
         $themeInfo = new ThemeInfo();
 
-        $required = ['name', 'author', 'namespace'];
+        $required = ['name', 'author', 'directory'];
         foreach ($required as $key) {
             if (!array_key_exists($key, $info)) {
                 throw new ThemeInfoAttributeException($key);
@@ -238,7 +238,7 @@ class Theme implements ThemeInterface
 
         $themeInfo->setName($info['name']);
         $themeInfo->setAuthor($info['author']);
-        $themeInfo->setNamespace(strtolower($info['namespace']));
+        $themeInfo->setDirectory(strtolower($info['directory']));
 
         if (isset($info['description'])) {
             $themeInfo->setDescription($info['description']);
@@ -250,7 +250,7 @@ class Theme implements ThemeInterface
             $themeInfo->setParent($info['parent']);
         }
 
-        $themeInfo->setPath($this->findPath($info['namespace']));
+        $themeInfo->setPath($this->findPath($info['directory']));
 
         return $themeInfo;
     }

@@ -18,11 +18,11 @@ class ThemeInfo implements ThemeInfoInterface
     private $author;
 
     /**
-     * Theme namespace.
-     * Namespace must be equal to directory name containing the theme.
+     * Theme directory.
+     * Directory must be equal to directory name containing the theme.
      * @var string
      */
-    private $namespace;
+    private $directory;
 
     /**
      * Theme version
@@ -100,17 +100,17 @@ class ThemeInfo implements ThemeInfoInterface
     /**
      * @return string
      */
-    public function getNamespace()
+    public function getDirectory()
     {
-        return $this->namespace;
+        return $this->directory;
     }
 
     /**
-     * @param string $namespace
+     * @param string $directory
      */
-    public function setNamespace($namespace)
+    public function setDirectory($directory)
     {
-        $this->namespace = $namespace;
+        $this->directory = $directory;
     }
 
     /**
