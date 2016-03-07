@@ -1,19 +1,18 @@
 {
-    "name": "karlomikus/theme",
-    "description": "Add theming support to your Laravel 5.* projects",
+    "name": "lukeed/lumen-theme",
+    "description": "Add theming support to your Lumen 5.* projects",
     "keywords": [
         "theme",
-        "laravel",
+        "lumen",
+        "templates",
         "views"
     ],
-    "homepage": "https://github.com/karlomikus/theme",
+    "homepage": "https://github.com/lukeed/lumen-theme",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Karlo Mikuš",
-            "email": "contact@karlomikus.com"
-        }
-    ],
+    "authors": [{
+        "name": "Luke Edwards",
+        "email": "luke@lukeed.com"
+    }],
     "require": {
         "php": ">=5.5.9"
     },
@@ -24,7 +23,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Karlomikus\\Theme\\": "src/Theme"
+            "Lukeed\\Theme\\": "src/Theme"
         },
         "files": [
             "src/Theme/helpers.php"
