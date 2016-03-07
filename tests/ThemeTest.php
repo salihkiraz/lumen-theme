@@ -1,6 +1,7 @@
 <?php
 
-class ThemeTest extends TestCase {
+class ThemeTest extends TestCase
+{
 
     private $theme;
 
@@ -18,7 +19,7 @@ class ThemeTest extends TestCase {
     {
         $this->theme->set('test-theme');
 
-        $this->assertEquals('test-theme', $this->theme->get()->getNamespace());
+        $this->assertEquals('test-theme', $this->theme->get()->getDirectory());
     }
 
     public function testGetAllThemes()
