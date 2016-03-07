@@ -10,6 +10,7 @@ use Lukeed\Theme\Contracts\ThemeInterface;
  * Theme
  *
  * @author Karlo Mikuš
+ * @author Luke Edwards
  * @version 1.0.2
  * @package Lukeed\Theme
  */

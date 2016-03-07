@@ -1,6 +1,6 @@
 {
   "name": "Test theme",
-  "author": "Karlo Mikuš",
+  "author": "Test Author",
   "version": "1.0",
   "directory": "test-theme",
   "parent": "parent-theme"
