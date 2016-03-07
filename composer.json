@@ -10,6 +10,9 @@
     "homepage": "https://github.com/lukeed/lumen-theme",
     "license": "MIT",
     "authors": [{
+        "name": "Karlo Mikuš",
+        "email": "contact@karlomikus.com"
+    },{
         "name": "Luke Edwards",
         "email": "luke@lukeed.com"
     }],
