@@ -200,6 +200,11 @@ class Theme implements ThemeInterface
         }
 
         $this->themes = $themes;
+
+        // if no active theme & if found 1+ theme, set first as default
+        if (count($themes) && !$this->activeTheme) {
+            $this->set(array_keys($themes)[0]);
+        }
     }
 
     /**
