@@ -1,8 +1,8 @@
 # Lumen Theme
 
-[![Build Status](https://travis-ci.org/lukeed/theme.svg?branch=master)](https://travis-ci.org/lukeed/theme)
-[![Latest Stable Version](https://poser.pugx.org/lukeed/theme/v/stable)](https://packagist.org/packages/lukeed/theme)
-[![License](https://poser.pugx.org/lukeed/theme/license)](https://packagist.org/packages/lukeed/theme)
+[![Build Status](https://travis-ci.org/lukeed/lumen-theme.svg?branch=master)](https://travis-ci.org/lukeed/lumen-theme)
+[![Latest Stable Version](https://poser.pugx.org/lukeed/lumen-theme/v/stable)](https://packagist.org/packages/lukeed/lumen-theme)
+[![License](https://poser.pugx.org/lukeed/lumen-theme/license)](https://packagist.org/packages/lukeed/lumen-theme)
 
 Add theming support to your Lumen 5.* projects.
 
